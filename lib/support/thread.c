@@ -12,7 +12,7 @@
 
 #include "support/thread.h"
 
-uint64_t get_thread_id(void)
+unsigned long long get_thread_id(void)
 {
 #if defined(HAVE_GETTID)
 	return gettid();
@@ -22,7 +22,7 @@ uint64_t get_thread_id(void)
 	if (pthread_threadid_np(NULL, &tid))
 		return tid;
 #elif defined(HAVE_PTHREAD)
-	return (__u64)(uintptr_t) pthread_self();
+	return (unsigned long long)(uintptr_t) pthread_self();
 #endif
 	return getpid();
 }
