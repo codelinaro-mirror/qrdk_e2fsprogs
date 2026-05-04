@@ -2216,7 +2216,7 @@ static void op_mknod(fuse_req_t req, fuse_ino_t fino, const char *name,
 	const struct fuse_ctx *ctxt = fuse_req_ctx(req);
 	struct fuse4fs *ff = fuse4fs_get(req);
 	ext2_filsys fs;
-	ext2_ino_t parent, child;
+	ext2_ino_t parent, child = 0;
 	errcode_t err;
 	int filetype;
 	gid_t gid;
@@ -2311,7 +2311,7 @@ static void op_mkdir(fuse_req_t req, fuse_ino_t fino, const char *name,
 	const struct fuse_ctx *ctxt = fuse_req_ctx(req);
 	struct fuse4fs *ff = fuse4fs_get(req);
 	ext2_filsys fs;
-	ext2_ino_t parent, child;
+	ext2_ino_t parent, child = 0;
 	errcode_t err;
 	char *block;
 	blk64_t blk;
@@ -2990,7 +2990,7 @@ static void op_symlink(fuse_req_t req, const char *target, fuse_ino_t fino,
 	const struct fuse_ctx *ctxt = fuse_req_ctx(req);
 	struct fuse4fs *ff = fuse4fs_get(req);
 	ext2_filsys fs;
-	ext2_ino_t parent, child;
+	ext2_ino_t parent, child = 0;
 	errcode_t err;
 	gid_t gid;
 	int ret = 0;
@@ -6042,7 +6042,7 @@ static int fuse4fs_main(struct fuse_args *args, struct fuse4fs *ff)
 	struct fuse_cmdline_opts opts;
 	struct fuse_session *se;
 	struct fuse_loop_config *loop_config = NULL;
-	int ret;
+	int ret = 0;
 
 	if (fuse_parse_cmdline(args, &opts) != 0) {
 		ret = 1;
