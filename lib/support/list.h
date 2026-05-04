@@ -148,13 +148,13 @@ static __always_inline bool __list_del_entry_valid(struct list_head *entry)
 	return ret;
 }
 #else
-static inline bool __list_add_valid(struct list_head *new,
-				struct list_head *prev,
-				struct list_head *next)
+static inline bool __list_add_valid(struct list_head *new EXT2FS_ATTR((unused)),
+				struct list_head *prev EXT2FS_ATTR((unused)),
+				struct list_head *next EXT2FS_ATTR((unused)))
 {
 	return true;
 }
-static inline bool __list_del_entry_valid(struct list_head *entry)
+static inline bool __list_del_entry_valid(struct list_head *entry EXT2FS_ATTR((unused)))
 {
 	return true;
 }

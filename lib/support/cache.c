@@ -15,6 +15,12 @@
 #include <stdint.h>
 #include <errno.h>
 
+#ifdef __GNUC__
+#define EXT2FS_ATTR(x) __attribute__(x)
+#else
+#define EXT2FS_ATTR(x)
+#endif
+
 #include "config.h"
 #include "list.h"
 #include "cache.h"
@@ -711,7 +717,7 @@ cache_node_put(
 
 void
 cache_node_set_priority(
-	struct cache *		cache,
+	struct cache *		cache EXT2FS_ATTR((unused)),
 	struct cache_node *	node,
 	int			priority)
 {
@@ -820,7 +826,7 @@ cache_flush(
 {
 	struct cache_hash	*hash;
 	struct cache_node	*node;
-	int			i;
+	unsigned int		i;
 	bool			still_dirty = false;
 
 	if (!cache->flush)
@@ -848,7 +854,7 @@ cache_report(
 	const char	*name,
 	struct cache	*cache)
 {
-	int		i;
+	unsigned int	i;
 	unsigned long	count, index, total;
 	unsigned long	hash_bucket_lengths[HASH_REPORT + 2] = { 0 };
 

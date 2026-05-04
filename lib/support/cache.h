@@ -83,7 +83,7 @@ typedef unsigned int (*cache_node_resize_t)(const struct cache *c,
 					    unsigned int curr_size,
 					    int dir);
 
-static inline unsigned int cache_gradual_resize(const struct cache *cache,
+static inline unsigned int cache_gradual_resize(const struct cache *cache EXT2FS_ATTR((unused)),
 						unsigned int curr_size,
 						int dir)
 {
