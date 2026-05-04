@@ -134,7 +134,7 @@ distclean: clean
 	$(RM) -f .depend Makefile $(srcdir)/TAGS $(srcdir)/Makefile.in.old
 
 # +++ Dependency line eater +++
-#
+# 
 # Makefile dependencies follow.  This must be the last section in
 # the Makefile.in file
 #
@@ -145,9 +145,10 @@ fuse4fs.o: $(srcdir)/fuse4fs.c $(top_builddir)/lib/config.h \
  $(top_srcdir)/lib/ext2fs/ext2_io.h $(top_builddir)/lib/ext2fs/ext2_err.h \
  $(top_srcdir)/lib/ext2fs/ext2_ext_attr.h $(top_srcdir)/lib/ext2fs/hashmap.h \
  $(top_srcdir)/lib/ext2fs/bitops.h $(top_srcdir)/lib/ext2fs/ext2fsP.h \
- $(top_srcdir)/lib/ext2fs/ext2fs.h $(top_srcdir)/version.h \
- $(top_srcdir)/lib/e2p/e2p.h $(top_srcdir)/lib/support/cache.h \
- $(top_srcdir)/lib/support/list.h $(top_srcdir)/lib/support/xbitops.h
+ $(top_srcdir)/lib/ext2fs/ext2fs.h $(top_srcdir)/lib/support/bthread.h \
+ $(top_srcdir)/lib/support/thread.h $(top_srcdir)/lib/support/list.h \
+ $(top_srcdir)/lib/support/cache.h $(top_srcdir)/version.h \
+ $(top_srcdir)/lib/e2p/e2p.h
 journal.o: $(srcdir)/../debugfs/journal.c $(top_builddir)/lib/config.h \
  $(top_builddir)/lib/dirpaths.h $(srcdir)/../debugfs/journal.h \
  $(top_srcdir)/e2fsck/jfs_user.h $(top_srcdir)/e2fsck/e2fsck.h \
@@ -161,8 +162,7 @@ journal.o: $(srcdir)/../debugfs/journal.c $(top_builddir)/lib/config.h \
  $(top_srcdir)/lib/support/dqblk_v2.h \
  $(top_srcdir)/lib/support/quotaio_tree.h \
  $(top_srcdir)/lib/ext2fs/fast_commit.h $(top_srcdir)/lib/ext2fs/jfs_compat.h \
- $(top_srcdir)/lib/support/list.h $(top_srcdir)/lib/ext2fs/compiler.h \
- $(top_srcdir)/lib/ext2fs/kernel-jbd.h
+ $(top_srcdir)/lib/support/list.h $(top_srcdir)/lib/ext2fs/kernel-jbd.h
 revoke.o: $(srcdir)/../e2fsck/revoke.c $(srcdir)/../e2fsck/jfs_user.h \
  $(top_builddir)/lib/config.h $(top_builddir)/lib/dirpaths.h \
  $(srcdir)/../e2fsck/e2fsck.h $(top_srcdir)/lib/ext2fs/ext2_fs.h \
@@ -175,8 +175,7 @@ revoke.o: $(srcdir)/../e2fsck/revoke.c $(srcdir)/../e2fsck/jfs_user.h \
  $(top_srcdir)/lib/support/dqblk_v2.h \
  $(top_srcdir)/lib/support/quotaio_tree.h \
  $(top_srcdir)/lib/ext2fs/fast_commit.h $(top_srcdir)/lib/ext2fs/jfs_compat.h \
- $(top_srcdir)/lib/support/list.h $(top_srcdir)/lib/ext2fs/compiler.h \
- $(top_srcdir)/lib/ext2fs/kernel-jbd.h
+ $(top_srcdir)/lib/support/list.h $(top_srcdir)/lib/ext2fs/kernel-jbd.h
 recovery.o: $(srcdir)/../e2fsck/recovery.c $(srcdir)/../e2fsck/jfs_user.h \
  $(top_builddir)/lib/config.h $(top_builddir)/lib/dirpaths.h \
  $(srcdir)/../e2fsck/e2fsck.h $(top_srcdir)/lib/ext2fs/ext2_fs.h \
@@ -189,5 +188,4 @@ recovery.o: $(srcdir)/../e2fsck/recovery.c $(srcdir)/../e2fsck/jfs_user.h \
  $(top_srcdir)/lib/support/dqblk_v2.h \
  $(top_srcdir)/lib/support/quotaio_tree.h \
  $(top_srcdir)/lib/ext2fs/fast_commit.h $(top_srcdir)/lib/ext2fs/jfs_compat.h \
- $(top_srcdir)/lib/support/list.h $(top_srcdir)/lib/ext2fs/compiler.h \
- $(top_srcdir)/lib/ext2fs/kernel-jbd.h
+ $(top_srcdir)/lib/support/list.h $(top_srcdir)/lib/ext2fs/kernel-jbd.h
