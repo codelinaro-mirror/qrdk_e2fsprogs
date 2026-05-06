@@ -120,6 +120,24 @@
 #endif
 #endif /* !defined(ENODATA) */
 
+#ifdef __APPLE__
+/*
+ * Sigh.... MacFuse is overloading the top bits of the flags field in
+ * struct fuse_init_{in,out} to specify MacFuse-specific capabilities.
+ * Avoid using these fuse3 capability flags until this gets fixed in
+ * MacFUSE
+ */
+#undef FUSE_CAP_CACHE_SYMLINKS
+#undef FUSE_CAP_NO_OPENDIR_SUPPORT
+#undef FUSE_CAP_EXPLICIT_INVAL_DATA
+#undef FUSE_CAP_EXPIRE_ONLY
+#undef FUSE_CAP_SETXATTR_EXT
+#undef FUSE_CAP_DIRECT_IO_ALLOW_MMAP
+#undef FUSE_CAP_PASSTHROUGH
+#undef FUSE_CAP_NO_EXPORT_SUPPORT
+#undef FUSE_CAP_OVER_IO_URING
+#endif
+
 #define FUSE4FS_ATTR_TIMEOUT	(0.0)
 
 static inline uint64_t round_up(uint64_t b, unsigned int align)
